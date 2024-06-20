@@ -13,6 +13,7 @@ services:
       - ./mysql:/var/lib/mysql
 
   php:
+    image: symfonyperso
     container_name: symfony
     build:
       context: ./app
