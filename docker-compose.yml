@@ -11,6 +11,11 @@ services:
       - 3306:3306
     volumes:
       - ./mysql:/var/lib/mysql
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
 
   php:
     image: symfonyperso
@@ -23,6 +28,11 @@ services:
       - ./app:/var/www
     depends_on:
       - db
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
 
   nginx:
     container_name: docker-test-nginx
@@ -35,3 +45,8 @@ services:
     depends_on:
       - php
       - db
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
