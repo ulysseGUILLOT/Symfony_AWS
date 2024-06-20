@@ -1,8 +1,0 @@
-{{ form_start(formStatus[ticket.id],{'attr': {'name': ticket.id}}) }}
-    <div class="row">
-        <div class="col">{{ form_row(formStatus[ticket.id].ticketStatus) }}</div>
-        <div class="col">{{ form_row(formStatus[ticket.id].submitButton, {'attr': {'class': 'btn-secondary'}}) }}</div>
-    </div>
-{{ form_end(formStatus[ticket.id]) }}
-
-
