@@ -1,0 +1,44 @@
+{# fixed-top #}
+<nav class="navbar navbar-expand-lg bg-light mb-5">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img class="logo" src="{{ asset('img/logo.png') }}" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <strong><a class="nav-link text-danger" href="/admin/users">ADMINISTRATION</a></strong>
+                    </li>
+                {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" >Mes tickets</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/ticket/new">Ajouter un ticket</a></li>
+                            <li><a class="dropdown-item" href="/ticket/">Voir mes tickets</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <span class="d-flex gap-2">
+
+                {% if app.user == null %}
+                    <a class="btn btn-outline-secondary" role="button" href="/register">S'inscrire</a>
+                    <a class="btn btn-secondary" href="/login">Se connecter</a>
+                {% else %}
+                    <em>{{ app.user.userIdentifier }}</em>
+                    <a class="btn btn-outline-secondary" href="{{ path('app_logout') }}">Se déconnecter</a>
+                {% endif %}
+			</span>
+        </div>
+    </div>
+</nav>

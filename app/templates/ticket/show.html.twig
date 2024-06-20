@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ticket{% endblock %}
+
+{% block body %}
+    <h1>Ticket</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th class="table-light col-2">Id</th>
+                <td>{{ ticket.id }}</td>
+            </tr>
+            <tr>
+                <th class="table-light col-2">Email User</th>
+                <td>{{ ticket.user.email }}</td>
+            </tr>
+            <tr>
+                <th class="table-light col-2">Statut</th>
+                <td>{{ ticket.ticketStatus.label }}</td>
+            </tr>
+            <tr>
+                <th class="table-light col-2">Label</th>
+                <td>{{ ticket.label }}</td>
+            </tr>
+            <tr>
+                <th class="table-light col-2">Description</th>
+                <td>{{ ticket.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-outline-secondary" href="{{ path('app_ticket_index') }}">retour</a>
+    {% if user.id == ticket.user.id %}
+        <a class="btn btn-secondary" href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">modifier</a>
+        {{ include('ticket/_delete_form.html.twig') }}
+    {% endif %}
+{% endblock %}

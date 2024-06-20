@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+
+<div class="border border-2 rounded-4 bg-light justify-content-center p-4 m-4 w-50">
+    <div class="col">{{ form_row(form.label) }}</div>
+    <div class="col">{{ form_row(form.description) }}</div>
+    <div class="col">{{ form_row(form.ticketStatus) }}</div>
+    <button class="btn btn-secondary mt-4">{{ button_label|default('Sauvegarder') }}</button>
+</div>
+{{ form_end(form) }}
