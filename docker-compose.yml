@@ -2,14 +2,15 @@ version: '3.8'
 
 services:
   db:
-    image: mysql:5.7
+    image: postgres:13
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_DATABASE: docker-test-db
+      POSTGRES_DB: docker-test-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
     ports:
-      - '3306:3306'
+      - '5432:5432'
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./postgresql:/var/lib/postgresql/data
 
   php:
     image: ulysseguillot/symfony6:latest
