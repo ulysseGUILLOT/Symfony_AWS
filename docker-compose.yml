@@ -12,8 +12,8 @@ services:
       - ./mysql:/var/lib/mysql
 
   php:
-    #image: ulysseguillot/symfony6:latest
-    build: app/.
+    image: ulysseguillot/symfony6:latest
+    #build: app/.
     ports:
       - '9000:9000'
     volumes:
