@@ -1,12 +1,28 @@
-# applique les variables d'env (clées AWS)
-export $(cat .env | xargs)
+# nombre d'instances
+AWS_INSTANCE_NUMBER=2
+
+echo $AWS_ACCESS_KEY_ID
+echo $AWS_SECRET_ACCESS_KEY
+
 
 docker container run -it --rm \
+  --env-file .env \
   -v $PWD/terraform:$PWD \
   -w $PWD \
-  -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-  -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+  -e TF_VAR_aws_instance_number=$AWS_INSTANCE_NUMBER \
   hashicorp/terraform init
-#docker container run -it -v $PWD:$PWD -w $PWD hashicorp/terraform plan
-#docker container run -it -v $PWD:$PWD -w $PWD hashicorp/terraform apply
-#docker container run -it -v $PWD:$PWD -w $PWD hashicorp/terraform destroy
+
+docker container run -it --rm \
+  --env-file .env \
+  -v $PWD/terraform:$PWD \
+  -w $PWD \
+  -e TF_VAR_aws_instance_number=$AWS_INSTANCE_NUMBER \
+  hashicorp/terraform plan
+
+docker container run -it --rm \
+  --env-file .env \
+  -v $PWD/terraform:$PWD \
+  -w $PWD \
+  -e TF_VAR_aws_instance_number=$AWS_INSTANCE_NUMBER \
+  hashicorp/terraform apply \
+  -auto-approve
