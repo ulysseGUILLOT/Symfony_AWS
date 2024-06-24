@@ -29,5 +29,5 @@ docker container run -it --rm \
 
 
 # Extraction dns et ip
-app_server_public_dns=($(grep -A $AWS_INSTANCE_NUMBER "app_server_public_dns =" tmp/info.txt | tail -n $AWS_INSTANCE_NUMBER | awk -F '"' '{print $2}'))
-app_server_public_ip=($(grep -A $AWS_INSTANCE_NUMBER "app_server_public_ip =" tmp/info.txt | tail -n $AWS_INSTANCE_NUMBER | awk -F '"' '{print $2}'))
+app_server_public_dns=($(grep -A $AWS_INSTANCE_NUMBER "app_server_public_dns =" tmp/info | tail -n $AWS_INSTANCE_NUMBER | awk -F '"' '{print $2}'))
+app_server_public_ip=($(grep -A $AWS_INSTANCE_NUMBER "app_server_public_ip =" tmp/info | tail -n $AWS_INSTANCE_NUMBER | awk -F '"' '{print $2}'))
