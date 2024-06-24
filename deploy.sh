@@ -26,3 +26,8 @@ docker container run -it --rm \
   -e TF_VAR_aws_instance_number=$AWS_INSTANCE_NUMBER \
   hashicorp/terraform apply \
   -auto-approve
+
+
+# Extraction dns et ip
+app_server_public_dns=($(grep -A $AWS_INSTANCE_NUMBER "app_server_public_dns =" tmp/info.txt | tail -n $AWS_INSTANCE_NUMBER | awk -F '"' '{print $2}'))
+app_server_public_ip=($(grep -A $AWS_INSTANCE_NUMBER "app_server_public_ip =" tmp/info.txt | tail -n $AWS_INSTANCE_NUMBER | awk -F '"' '{print $2}'))
