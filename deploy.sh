@@ -25,7 +25,8 @@ docker container run -it --rm \
   -w $PWD \
   -e TF_VAR_aws_instance_number=$AWS_INSTANCE_NUMBER \
   hashicorp/terraform apply \
-  -auto-approve
+  -auto-approve \
+  > tmp/info
 
 
 # Extraction dns et ip
