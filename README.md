@@ -8,4 +8,5 @@
 
 ## Déploiement :
 
-* Modifier 
+* Modifier les clées AWS dans le fichier `.env`
+* Lancer le script de déploiement `deploy.sh`
