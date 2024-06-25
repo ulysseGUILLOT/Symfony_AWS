@@ -12,4 +12,4 @@ WORKDIR /playbooks
 
 COPY ./playbook/* ./
 
-#RUN chmod 400 myKey.pem
+RUN chmod 400 myKey.pem
