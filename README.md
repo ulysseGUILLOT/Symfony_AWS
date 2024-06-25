@@ -8,6 +8,7 @@
 
 ## Déploiement :
 
+* Projet configuré pour les serveurs us-east-1
 * Modifier les clées AWS dans le fichier `.env`
 * Importer le fichier myKey.pem à la racine du projet `.` et dans le répertoire `.ansible/playbook/`
 * Lancer le script de déploiement `deploy.sh`
