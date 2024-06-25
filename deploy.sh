@@ -1,10 +1,6 @@
 # nombre d'instances
 AWS_INSTANCE_NUMBER=2
 
-echo $AWS_ACCESS_KEY_ID
-echo $AWS_SECRET_ACCESS_KEY
-
-
 docker container run -it --rm \
   --env-file .env \
   -v $PWD/terraform:$PWD \
