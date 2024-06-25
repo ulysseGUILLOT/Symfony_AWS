@@ -36,3 +36,11 @@ echo "[workers]" >> ansible/playbook/inventory.ini
 for ((i=1; i<${#app_server_public_dns[@]}; i++)); do
     echo "worker$i ansible_host=${app_server_public_dns[$i]} aws_ip=${app_server_public_ip[$i]} ansible_user=ubuntu ansible_ssh_private_key_file=myKey.pem" >> ansible/playbook/inventory.ini
 done
+
+# Construction de l'image Docker d'Ansible
+docker build -t ansible_image ./ansible
+
+# Execution du playbook Ansible
+docker container run --rm -it ansible_image ansible-playbook -i inventory.ini playbook.yml
+
+
