@@ -10,6 +10,6 @@ RUN pip3 install --upgrade pip; \
 
 WORKDIR /playbooks
 
-COPY playbook/* ./
+COPY ./playbook/* ./
 
-RUN chmod 400 myKey.pem
+#RUN chmod 400 myKey.pem
