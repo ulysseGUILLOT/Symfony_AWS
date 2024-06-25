@@ -6,4 +6,5 @@ docker container run -it --rm \
   -v $PWD/terraform:$PWD \
   -w $PWD \
   -e TF_VAR_aws_instance_number=$AWS_INSTANCE_NUMBER \
-  hashicorp/terraform destroy
+  hashicorp/terraform destroy \
+  -auto-approve \
