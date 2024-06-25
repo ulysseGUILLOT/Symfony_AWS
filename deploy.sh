@@ -32,7 +32,6 @@ app_server_public_ip=($(grep -A $AWS_INSTANCE_NUMBER "app_server_public_ip =" tm
 # Ecriture de l'inventaire Ansible (inventory.ini)
 echo "[managers]" > ansible/playbook/inventory.ini
 echo "manager ansible_host=${app_server_public_dns[0]} aws_ip=${app_server_public_ip[0]} ansible_user=ubuntu ansible_ssh_private_key_file=myKey.pem" >> ansible/playbook/inventory.ini
-
 echo "[workers]" >> ansible/playbook/inventory.ini
 for ((i=1; i<${#app_server_public_dns[@]}; i++)); do
     echo "worker$i ansible_host=${app_server_public_dns[$i]} aws_ip=${app_server_public_ip[$i]} ansible_user=ubuntu ansible_ssh_private_key_file=myKey.pem" >> ansible/playbook/inventory.ini
